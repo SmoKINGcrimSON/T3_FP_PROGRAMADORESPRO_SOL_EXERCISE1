@@ -1,0 +1,120 @@
+﻿<Window x:Class="T3_FP_PROGRAMADORESPRO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:T3_FP_PROGRAMADORESPRO"
+        mc:Ignorable="d" Height="490" Width="800" MaxHeight="490" MinHeight="490" MaxWidth="800" MinWidth="800" Icon="Images/PetShopLogo.png" Name="p_myWindow">
+    <!--Estilos-->
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+    </Window.Resources>
+    <!--Proyecto Principal-->
+    <Grid>
+        <!--Dock Panel Principal-->
+        <DockPanel>
+            <!--Registros-->
+            <StackPanel DockPanel.Dock="Left" Width="300">
+                <!--Registro Dueños-->
+                <Grid Height="225" Background="#7B4BD1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Text="REGISTRAR DUEÑOS"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Nombre:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Dirección:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Teléfono:" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="p_textbox_duenoNombre"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="p_textbox_duenoDireccion"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="p_textbox_duenoTelefono"/>
+                    <Button Grid.Row="4" Width="100" Height="35" Content="Registrar" x:Name="p_button_duenoRegistro"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" x:Name="p_textblock_duenoAgregado" TextWrapping="Wrap"/>
+                </Grid>
+                <!--Registro Mascotas-->
+                <Grid Height="225" Background="#F09862">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Text="REGISTRAR DUEÑOS"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Nombre:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Edad:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Raza:"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Dueño:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="p_textbox_mascotaNombre"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="p_textbox_mascotaEdad"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="p_textbox_mascotaRaza"/>
+                    <ComboBox Grid.Row="4" Grid.Column="1" x:Name="p_combobox_mascotaDueno" Height="30" Width="120">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,5,0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Path=P_nombre}"/>
+                                    <TextBlock Text="{Binding Path=P_direccion}" Grid.Column="1" Margin="10,0,0,0"/>
+                                    <TextBlock Text="{Binding Path=P_telefono}" Grid.Column="2" Margin="10,0,0,0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Row="5" Width="100" Height="30" Content="Registrar" x:Name="p_button_mascotaRegistro"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" x:Name="p_textblock_mascotaAgregada" TextWrapping="Wrap"/>
+                </Grid>
+            </StackPanel>
+            <!--Verificación de existencia-->
+            <Grid Margin="0,30,0,0" HorizontalAlignment="Center" Height="400" Width="350" DockPanel.Dock="Right" VerticalAlignment="Top" Background="#EC8D74">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Buscar Mascota" Grid.ColumnSpan="2" FontSize="30"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Nombre de la mascota:"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="p_txtbox_mascotaBuscarNombre"/>
+                <Button Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="0" Width="150" Height="30" Content="Buscar Mascota" x:Name="p_button_mascotaBucar"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="70" Width="330" TextAlignment="Center" Text="Ninguna mascota ha sido buscada de momento" FontSize="17" 
+                           TextWrapping="Wrap" x:Name="p_txtblock_mensajeMascotaEncontrada"/>
+                <Image Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="p_img_mascotaBusqueda" Height="150"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
